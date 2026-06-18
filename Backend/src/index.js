@@ -18,8 +18,8 @@ const PublicDir = path.join(process.cwd(),"public")
 const app  = express()
 
 app.use(express.json())
-app.use(clerkMiddleware())
 app.use(cors({origin:FRONTEND_URL,credentials:true}))
+app.use(clerkMiddleware())
 
 if(fs.existsSync(PublicDir)){// only for deployment 
     app.use(express.static(PublicDir))
