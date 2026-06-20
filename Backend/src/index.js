@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import User from "./models/user.model.js";
-import clerkWebhook from "./routes/clerkWebhook.route.js";
+import clerkWebhook from "./webhooks/clerk.webhooks.js";
 import fs from "fs";
 import path from "path";
 
