@@ -18,7 +18,11 @@ router.post("/", async (req, res) => {
       : String(req.body);
     const request = new Request("http://internal/webhooks/clerk", {
       method: "POST",
-      headers: new Headers(req.headers),
+      headers: {
+        "svix-id": req.headers["svix-id"],
+        "svix-timestamp": req.headers["svix-timestamp"],
+        "svix-signature": req.headers["svix-signature"],
+      },
       body: payload,
     });
 
@@ -50,8 +54,13 @@ router.post("/", async (req, res) => {
 
     res.status(200).json({ received: true });
   } catch (error) {
-    console.error("Error in Clerk webhook:", error);
-    res.status(400).json({ message: "Webhook verification failed" });
+    console.error("Error in Clerk webhook:");
+    console.error(error);
+    console.error(error.message);
+
+    res.status(400).json({
+      message: error.message,
+    });
   }
 });
 
