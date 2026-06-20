@@ -3,6 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import User from "./models/user.model.js";
 import clerkWebhook from "./webhooks/clerk.webhooks.js";
+import authRoutes from './routes/auth.routes.js'
 import fs from "fs";
 import path from "path";
 
@@ -20,6 +21,7 @@ app.use(
   express.raw({ type: "application/json" }),
   clerkWebhook,
 );
+app.use("/api/auth", authRoutes)
 app.use(express.json());
 app.use(cors({ origin: FRONTEND_URL, credentials: true }));
 app.use(clerkMiddleware());
