@@ -72,5 +72,13 @@ export async function getMessage(req,res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
-
+export async function sendMessage(req,res) {
+  try {
+    const {text} = req.body
+    const {id:receiverId}= req.params
+    const senderId = req.user._id
+  } catch (error) {
+    
+  }
+}
 
