@@ -10,12 +10,13 @@ import path from "path";
 
 import { connectDB } from "./lib/db.js";
 import { clerkMiddleware } from "@clerk/express";
+import { server ,app} from "./lib/socket.js";
 
 const PORT = process.env.PORT;
 const FRONTEND_URL = process.env.FRONTEND_URL;
 const PublicDir = path.join(process.cwd(), "public");
 
-const app = express();
+
 
 app.use(
   "/api/webhooks/clerk",
@@ -36,7 +37,7 @@ if (fs.existsSync(PublicDir)) {
   });
 }
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectDB();
   console.log(`server is running  at port ${PORT}`);
 });
