@@ -1,5 +1,5 @@
 import express from 'express'
-import {getUsersForSidebar , getConversationForSidebar, getMessage} from '../controllers/message.controller.js'
+import {getUsersForSidebar , getConversationForSidebar, getMessage,sendMessage} from '../controllers/message.controller.js'
 import { protectRoute } from '../middleware/auth.middleware.js'
 import { upload } from '../middleware/upload.middleware.js'
 
