@@ -7,6 +7,7 @@ import { useAuth } from "@clerk/react";
 import PageLoader from "./components/PageLoader";
 import { useAuthStore } from "./store/useAuthStore";
 import {Toaster} from 'react-hot-toast'
+import { useEffect } from "react";
 
 function App() {
   const {isSignedIn , isLoaded} = useAuth();
